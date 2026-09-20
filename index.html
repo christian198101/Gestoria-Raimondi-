@@ -6,7 +6,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <style>
 
-    /* ===== FONDOS ===== */
+    /* ===== FONDO GENERAL ===== */
     body {
       margin: 0;
       font-family: Arial, sans-serif;
@@ -17,21 +17,37 @@
       color: #ffffff;
     }
 
-    @media (max-width: 768px) {
-      body {
-        background-image: url('fondo-movil.jpg');
-      }
-    }
-
-    /* ===== CONTENIDO ===== */
+    /* ===== VERSIÓN WEB ===== */
     .banner {
       max-width: 1200px;
       margin: 0 auto;
-      padding: 20px;
+      padding: 5px 20px; /* SUBE TODO */
       box-sizing: border-box;
       backdrop-filter: blur(3px);
     }
 
+    /* ===== VERSIÓN MÓVIL ===== */
+    @media (max-width: 768px) {
+
+      html, body {
+        height: auto;
+        overflow: auto;
+      }
+
+      body {
+        background-image: url('fondo-movil.jpg');
+        background-size: cover;
+        background-position: center;
+      }
+
+      .banner {
+        height: auto;            /* YA NO OCUPA TODA LA PANTALLA */
+        display: block;          /* ELIMINA CENTRADO VERTICAL */
+        padding-top: 20px;       /* SUBE TODO */
+      }
+    }
+
+    /* ===== TITULO ===== */
     .titulo {
       text-align: center;
       margin-bottom: 20px;
@@ -50,6 +66,7 @@
       text-transform: uppercase;
     }
 
+    /* ===== BOTONES ===== */
     .botones {
       display: flex;
       flex-wrap: wrap;
@@ -58,7 +75,6 @@
       margin-top: 20px;
     }
 
-    /* ===== BOTONES FORMALES ===== */
     .btn {
       display: inline-flex;
       align-items: center;
@@ -104,7 +120,7 @@
       max-width: 300px;
     }
 
-    .submenu a, .submenu button {
+    .submenu a {
       background: rgba(255,255,255,0.15);
       border: 1px solid rgba(255,255,255,0.4);
       padding: 10px;
@@ -115,15 +131,14 @@
       font-weight: 600;
       box-shadow: 0 2px 6px rgba(0,0,0,0.25);
       transition: all 0.25s ease;
-      cursor: pointer;
     }
 
-    .submenu a:hover, .submenu button:hover {
+    .submenu a:hover {
       background: rgba(255,255,255,0.25);
       box-shadow: 0 4px 10px rgba(0,0,0,0.35);
     }
 
-    /* ===== BOTÓN DE MÚSICA (solo móviles) ===== */
+    /* ===== BOTÓN DE MÚSICA ===== */
     #btnMusica {
       position: fixed;
       bottom: 25px;
@@ -168,60 +183,42 @@
 
     <div class="botones">
 
-      <!-- WhatsApp -->
       <a class="btn btn-whatsapp" href="https://wa.me/5492304564721" target="_blank">
         <span class="btn-icon">💬</span> ¡Contáctanos!
       </a>
 
-      <!-- Motos -->
       <button class="btn btn-motos" onclick="toggleMotos()">
         <span class="btn-icon">🏍️</span> Trámites de Motos
       </button>
 
-      <!-- SUBMENÚ MOTOS -->
       <div id="submenuMotos" class="submenu">
         <a href="https://wa.me/5492304564721?text=Hola%2C%20quiero%20hacer%20una%20consulta%20sobre%20tr%C3%A1mites%20de%20motos."
-           target="_blank">
-          Dejanos tu consulta
-        </a>
+           target="_blank">Dejanos tu consulta</a>
       </div>
 
-      <!-- Coches -->
       <button class="btn btn-coches" onclick="toggleCoches()">
         <span class="btn-icon">🚗</span> Trámites para Coches
       </button>
 
-      <!-- SUBMENÚ COCHES -->
       <div id="submenuCoches" class="submenu">
         <a href="https://wa.me/5492304564721?text=Hola%2C%20quiero%20hacer%20una%20consulta%20sobre%20tr%C3%A1mites%20de%20coches."
-           target="_blank">
-          Dejanos tu consulta
-        </a>
+           target="_blank">Dejanos tu consulta</a>
       </div>
 
-      <!-- Multas -->
       <button class="btn btn-deuda" onclick="toggleMultas()">
         <span class="btn-icon">📄</span> Consultá tu deuda de patentes o multas
       </button>
 
-      <!-- SUBMENÚ MULTAS -->
       <div id="submenuMultas" class="submenu">
-        <a href="https://infraccionesba.gba.gob.ar/consulta-infraccion" target="_blank">
-          Provincia
-        </a>
-
-        <a href="https://buenosaires.gob.ar/licenciasdeconducir/consulta-de-infracciones/?actas=transito" target="_blank">
-          Capital
-        </a>
+        <a href="https://infraccionesba.gba.gob.ar/consulta-infraccion" target="_blank">Provincia</a>
+        <a href="https://buenosaires.gob.ar/licenciasdeconducir/consulta-de-infracciones/?actas=transito" target="_blank">Capital</a>
       </div>
 
     </div>
   </div>
 
-  <!-- AUDIO -->
   <audio id="player" src="musica.mp3" autoplay loop></audio>
 
-  <!-- BOTÓN MÓVIL -->
   <div id="btnMusica">🔊</div>
 
   <script>
@@ -240,7 +237,6 @@
       menu.style.display = menu.style.display === "flex" ? "none" : "flex";
     }
 
-    /* ===== MÚSICA ===== */
     const player = document.getElementById("player");
     const btnMusica = document.getElementById("btnMusica");
 
@@ -265,6 +261,4 @@
 
 </body>
 </html>
-
-
 

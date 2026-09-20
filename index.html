@@ -26,12 +26,12 @@
       backdrop-filter: blur(3px);
     }
 
-    /* ===== VERSIÓN MÓVIL ===== */
+    /* ===== VERSIÓN MÓVIL PANTALLA COMPLETA ===== */
     @media (max-width: 768px) {
 
       html, body {
-        height: auto;
-        overflow: auto;
+        height: 100vh;        /* PANTALLA COMPLETA */
+        overflow: hidden;     /* SIN SCROLL */
       }
 
       body {
@@ -41,9 +41,11 @@
       }
 
       .banner {
-        height: auto;            /* YA NO OCUPA TODA LA PANTALLA */
-        display: block;          /* ELIMINA CENTRADO VERTICAL */
-        padding-top: 20px;       /* SUBE TODO */
+        height: 100vh;        /* OCUPA TODA LA PANTALLA */
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-start; /* SUBE TODO */
+        padding-top: 30px;    /* AJUSTÁ A GUSTO */
       }
     }
 
@@ -261,4 +263,3 @@
 
 </body>
 </html>
-

@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <title>Yanina Raimondi – Gestoría del Automotor</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <style>
+
+    /* ===== FONDOS ===== */
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background-image: url('fondo-web.jpg');
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+      color: #ffffff;
+    }
+
+    @media (max-width: 768px) {
+      body {
+        background-image: url('fondo-movil.jpg');
+      }
+    }
+
+    /* ===== CONTENIDO ===== */
+    .banner {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 20px;
+      box-sizing: border-box;
+      backdrop-filter: blur(3px);
+    }
+
+    .titulo {
+      text-align: center;
+      margin-bottom: 20px;
+      text-shadow: 0 2px 4px rgba(0,0,0,0.5);
+    }
+
+    .titulo h1 {
+      font-size: 2rem;
+      margin: 0;
+    }
+
+    .titulo h2 {
+      font-size: 1.2rem;
+      margin: 5px 0 0;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+    }
+
+    .botones {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 15px;
+      margin-top: 20px;
+    }
+
+    /* ===== BOTONES FORMALES ===== */
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 12px 24px;
+      border-radius: 8px;
+      border: 1px solid rgba(255,255,255,0.4);
+      cursor: pointer;
+      font-size: 1rem;
+      font-weight: 600;
+      text-decoration: none;
+      color: #ffffff;
+      min-width: 220px;
+      background: rgba(255,255,255,0.15);
+      box-shadow: 0 2px 6px rgba(0,0,0,0.25);
+      transition: all 0.25s ease;
+      backdrop-filter: blur(6px);
+    }
+
+    .btn:hover {
+      background: rgba(255,255,255,0.25);
+      box-shadow: 0 4px 10px rgba(0,0,0,0.35);
+      transform: translateY(-2px);
+    }
+
+    .btn-whatsapp { background: #1e7e34; }
+    .btn-motos { background: #b36b00; }
+    .btn-coches { background: #0d47a1; }
+    .btn-deuda { background: #2e7d32; }
+
+    .btn-icon {
+      margin-right: 8px;
+      font-size: 1.1rem;
+    }
+
+    /* ===== SUBMENÚ ===== */
+    .submenu {
+      display: none;
+      flex-direction: column;
+      gap: 10px;
+      margin-top: 10px;
+      width: 100%;
+      max-width: 300px;
+    }
+
+    .submenu a, .submenu button {
+      background: rgba(255,255,255,0.15);
+      border: 1px solid rgba(255,255,255,0.4);
+      padding: 10px;
+      border-radius: 8px;
+      text-align: center;
+      text-decoration: none;
+      color: white;
+      font-weight: 600;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.25);
+      transition: all 0.25s ease;
+      cursor: pointer;
+    }
+
+    .submenu a:hover, .submenu button:hover {
+      background: rgba(255,255,255,0.25);
+      box-shadow: 0 4px 10px rgba(0,0,0,0.35);
+    }
+
+    /* ===== BOTÓN DE MÚSICA (solo móviles) ===== */
+    #btnMusica {
+      position: fixed;
+      bottom: 25px;
+      right: 25px;
+      width: 60px;
+      height: 60px;
+      background: rgba(255,255,255,0.15);
+      border: 1px solid rgba(255,255,255,0.4);
+      backdrop-filter: blur(6px);
+      border-radius: 50%;
+      display: none;
+      justify-content: center;
+      align-items: center;
+      font-size: 28px;
+      color: white;
+      cursor: pointer;
+      z-index: 9999;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.25);
+      transition: all 0.25s ease;
+    }
+
+    #btnMusica:hover {
+      background: rgba(255,255,255,0.25);
+      transform: scale(1.1);
+    }
+
+    @media (max-width: 768px) {
+      #btnMusica {
+        display: flex;
+      }
+    }
+
+  </style>
+</head>
+<body>
+
+  <div class="banner">
+    <div class="titulo">
+      <h1>Yanina Raimondi</h1>
+      <h2>Gestoría del Automotor</h2>
+    </div>
+
+    <div class="botones">
+
+      <!-- WhatsApp -->
+      <a class="btn btn-whatsapp" href="https://wa.me/5492304564721" target="_blank">
+        <span class="btn-icon">💬</span> ¡Contáctanos!
+      </a>
+
+      <!-- Motos -->
+      <button class="btn btn-motos" onclick="toggleMotos()">
+        <span class="btn-icon">🏍️</span> Trámites de Motos
+      </button>
+
+      <!-- SUBMENÚ MOTOS -->
+      <div id="submenuMotos" class="submenu">
+        <a href="https://wa.me/5492304564721?text=Hola%2C%20quiero%20hacer%20una%20consulta%20sobre%20tr%C3%A1mites%20de%20motos."
+           target="_blank">
+          Dejanos tu consulta
+        </a>
+      </div>
+
+      <!-- Coches -->
+      <button class="btn btn-coches" onclick="toggleCoches()">
+        <span class="btn-icon">🚗</span> Trámites para Coches
+      </button>
+
+      <!-- SUBMENÚ COCHES -->
+      <div id="submenuCoches" class="submenu">
+        <a href="https://wa.me/5492304564721?text=Hola%2C%20quiero%20hacer%20una%20consulta%20sobre%20tr%C3%A1mites%20de%20coches."
+           target="_blank">
+          Dejanos tu consulta
+        </a>
+      </div>
+
+      <!-- Multas -->
+      <button class="btn btn-deuda" onclick="toggleMultas()">
+        <span class="btn-icon">📄</span> Consultá tu deuda de patentes o multas
+      </button>
+
+      <!-- SUBMENÚ MULTAS -->
+      <div id="submenuMultas" class="submenu">
+        <a href="https://infraccionesba.gba.gob.ar/consulta-infraccion" target="_blank">
+          Provincia
+        </a>
+
+        <a href="https://buenosaires.gob.ar/licenciasdeconducir/consulta-de-infracciones/?actas=transito" target="_blank">
+          Capital
+        </a>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- AUDIO -->
+  <audio id="player" src="musica.mp3" autoplay loop></audio>
+
+  <!-- BOTÓN MÓVIL -->
+  <div id="btnMusica">🔊</div>
+
+  <script>
+    function toggleMultas() {
+      const menu = document.getElementById("submenuMultas");
+      menu.style.display = menu.style.display === "flex" ? "none" : "flex";
+    }
+
+    function toggleMotos() {
+      const menu = document.getElementById("submenuMotos");
+      menu.style.display = menu.style.display === "flex" ? "none" : "flex";
+    }
+
+    function toggleCoches() {
+      const menu = document.getElementById("submenuCoches");
+      menu.style.display = menu.style.display === "flex" ? "none" : "flex";
+    }
+
+    /* ===== MÚSICA ===== */
+    const player = document.getElementById("player");
+    const btnMusica = document.getElementById("btnMusica");
+
+    player.volume = 1;
+    player.play().catch(() => {});
+
+    let musicaActiva = false;
+
+    btnMusica.addEventListener("click", () => {
+      if (!musicaActiva) {
+        player.muted = false;
+        player.play().catch(() => {});
+        btnMusica.innerHTML = "🔈";
+        musicaActiva = true;
+      } else {
+        player.pause();
+        btnMusica.innerHTML = "🔊";
+        musicaActiva = false;
+      }
+    });
+  </script>
+
+</body>
+</html>
+
+
+

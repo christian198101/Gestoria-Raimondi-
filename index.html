@@ -4,9 +4,8 @@
   <meta charset="UTF-8" />
   <title>Yanina Raimondi – Gestoría del Automotor</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <style>
 
-    /* ===== FONDO GENERAL ===== */
+  <style>
     body {
       margin: 0;
       font-family: Arial, sans-serif;
@@ -17,99 +16,123 @@
       color: #ffffff;
     }
 
-    /* ===== VERSIÓN WEB ===== */
     .banner {
       max-width: 1200px;
       margin: 0 auto;
-      padding: 5px 20px; /* SUBE TODO */
+      padding: 20px;
       box-sizing: border-box;
       backdrop-filter: blur(3px);
     }
 
-    /* ===== VERSIÓN MÓVIL PANTALLA COMPLETA ===== */
     @media (max-width: 768px) {
-
       html, body {
-        height: 100vh;        /* PANTALLA COMPLETA */
-        overflow: hidden;     /* SIN SCROLL */
+        min-height: 100vh;
+        overflow: hidden;
       }
-
       body {
         background-image: url('fondo-movil.jpg');
-        background-size: cover;
-        background-position: center;
       }
-
       .banner {
-        height: 100vh;        /* OCUPA TODA LA PANTALLA */
-        display: flex;
-        flex-direction: column;
-        justify-content: flex-start; /* SUBE TODO */
-        padding-top: 30px;    /* AJUSTÁ A GUSTO */
+        min-height: 100vh;
+        padding-top: 20px;
       }
     }
 
-    /* ===== TITULO ===== */
+    /* ===== TÍTULO 3D BLANCO RESALTADO ===== */
     .titulo {
       text-align: center;
-      margin-bottom: 20px;
-      text-shadow: 0 2px 4px rgba(0,0,0,0.5);
+      margin-bottom: 25px;
     }
 
     .titulo h1 {
-      font-size: 2rem;
+      font-size: 3.6rem;
       margin: 0;
+      font-weight: 900;
+      text-transform: uppercase;
+      color: #ffffff;
+
+      /* 3D blanco nítido */
+      text-shadow:
+        0px 2px 2px rgba(0,0,0,0.35),
+        0px 4px 4px rgba(0,0,0,0.30),
+        0px 6px 6px rgba(0,0,0,0.25),
+        0px 8px 10px rgba(0,0,0,0.45);
     }
 
     .titulo h2 {
-      font-size: 1.2rem;
+      font-size: 1.6rem;
       margin: 5px 0 0;
-      letter-spacing: 2px;
+      letter-spacing: 3px;
       text-transform: uppercase;
+      font-weight: 700;
+      color: #ffffff;
+
+      text-shadow:
+        0px 2px 2px rgba(0,0,0,0.35),
+        0px 4px 4px rgba(0,0,0,0.30);
     }
 
-    /* ===== BOTONES ===== */
-    .botones {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
-      gap: 15px;
-      margin-top: 20px;
-    }
-
+    /* ===== BOTONES TRANSPARENTES CON BORDE AZUL ===== */
     .btn {
-      display: inline-flex;
-      align-items: center;
+      display: flex;
       justify-content: center;
-      padding: 12px 24px;
-      border-radius: 8px;
-      border: 1px solid rgba(255,255,255,0.4);
+      align-items: center;
+      padding: 12px 20px;
+      border-radius: 14px;
       cursor: pointer;
       font-size: 1rem;
       font-weight: 600;
       text-decoration: none;
       color: #ffffff;
-      min-width: 220px;
-      background: rgba(255,255,255,0.15);
-      box-shadow: 0 2px 6px rgba(0,0,0,0.25);
+
+      background: rgba(255, 255, 255, 0.10);
+      border: 2px solid #4da3ff;
+      box-shadow: 0 6px 18px rgba(0,0,0,0.45);
       transition: all 0.25s ease;
-      backdrop-filter: blur(6px);
+      backdrop-filter: blur(10px);
     }
 
     .btn:hover {
-      background: rgba(255,255,255,0.25);
-      box-shadow: 0 4px 10px rgba(0,0,0,0.35);
-      transform: translateY(-2px);
+      background: rgba(255, 255, 255, 0.18);
+      border-color: #82c3ff;
+      box-shadow: 0 10px 26px rgba(130,195,255,0.45);
+      transform: translateY(-2px) scale(1.03);
     }
 
-    .btn-whatsapp { background: #1e7e34; }
-    .btn-motos { background: #b36b00; }
-    .btn-coches { background: #0d47a1; }
-    .btn-deuda { background: #2e7d32; }
+    @media (max-width: 768px) {
+      .btn:active {
+        transform: scale(0.96);
+      }
+    }
 
-    .btn-icon {
-      margin-right: 8px;
-      font-size: 1.1rem;
+    /* ===== COLUMNAS ===== */
+    .contenedor-columnas {
+      display: flex;
+      justify-content: space-between;
+      gap: 20px;
+      flex-wrap: wrap;
+    }
+
+    .columna {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      width: 48%;
+    }
+
+    @media (max-width: 768px) {
+      .columna {
+        width: 100%;
+      }
+    }
+
+    /* ===== BOTÓN CENTRAL GRANDE ===== */
+    .btn-central {
+      margin: 30px auto 0 auto;
+      width: 80%;
+      max-width: 400px;
+      font-size: 1.3rem;
+      padding: 18px 26px;
     }
 
     /* ===== SUBMENÚ ===== */
@@ -118,26 +141,15 @@
       flex-direction: column;
       gap: 10px;
       margin-top: 10px;
-      width: 100%;
-      max-width: 300px;
+      opacity: 0;
+      transform: translateY(-10px);
+      transition: all 0.18s ease-out;
     }
 
-    .submenu a {
-      background: rgba(255,255,255,0.15);
-      border: 1px solid rgba(255,255,255,0.4);
-      padding: 10px;
-      border-radius: 8px;
-      text-align: center;
-      text-decoration: none;
-      color: white;
-      font-weight: 600;
-      box-shadow: 0 2px 6px rgba(0,0,0,0.25);
-      transition: all 0.25s ease;
-    }
-
-    .submenu a:hover {
-      background: rgba(255,255,255,0.25);
-      box-shadow: 0 4px 10px rgba(0,0,0,0.35);
+    .submenu.show {
+      display: flex;
+      opacity: 1;
+      transform: translateY(0);
     }
 
     /* ===== BOTÓN DE MÚSICA ===== */
@@ -147,9 +159,8 @@
       right: 25px;
       width: 60px;
       height: 60px;
-      background: rgba(255,255,255,0.15);
-      border: 1px solid rgba(255,255,255,0.4);
-      backdrop-filter: blur(6px);
+      background: rgba(255,255,255,0.10);
+      border: 2px solid #4da3ff;
       border-radius: 50%;
       display: none;
       justify-content: center;
@@ -158,12 +169,12 @@
       color: white;
       cursor: pointer;
       z-index: 9999;
-      box-shadow: 0 2px 6px rgba(0,0,0,0.25);
+      box-shadow: 0 4px 12px rgba(0,0,0,0.45);
       transition: all 0.25s ease;
+      backdrop-filter: blur(10px);
     }
 
     #btnMusica:hover {
-      background: rgba(255,255,255,0.25);
       transform: scale(1.1);
     }
 
@@ -172,93 +183,66 @@
         display: flex;
       }
     }
-
   </style>
 </head>
+
 <body>
 
   <div class="banner">
+
     <div class="titulo">
       <h1>Yanina Raimondi</h1>
       <h2>Gestoría del Automotor</h2>
     </div>
 
-    <div class="botones">
+    <div class="contenedor-columnas">
 
-      <a class="btn btn-whatsapp" href="https://wa.me/5492304564721" target="_blank">
-        <span class="btn-icon">💬</span> ¡Contáctanos!
-      </a>
-
-      <button class="btn btn-motos" onclick="toggleMotos()">
-        <span class="btn-icon">🏍️</span> Trámites de Motos
-      </button>
-
-      <div id="submenuMotos" class="submenu">
-        <a href="https://wa.me/5492304564721?text=Hola%2C%20quiero%20hacer%20una%20consulta%20sobre%20tr%C3%A1mites%20de%20motos."
-           target="_blank">Dejanos tu consulta</a>
+      <div class="columna">
+        <a class="btn" href="https://wa.me/5492304564721?text=Hola%2C%20quiero%20consultar%20sobre%20TRANSFERENCIA." target="_blank">Transferencia</a>
+        <a class="btn" href="https://wa.me/5492304564721?text=Hola%2C%20quiero%20consultar%20sobre%20INSCRIPCION%20INICIAL." target="_blank">Inscripción inicial</a>
+        <a class="btn" href="https://wa.me/5492304564721?text=Hola%2C%20quiero%20consultar%20sobre%20INFORME%20DE%20DOMINIO." target="_blank">Informe de dominio</a>
+        <a class="btn" href="https://wa.me/5492304564721?text=Hola%2C%20quiero%20consultar%20sobre%20DUPLICADO%20DE%20CHAPAS." target="_blank">Duplicado de chapas</a>
+        <a class="btn" href="https://wa.me/5492304564721?text=Hola%2C%20quiero%20consultar%20sobre%20CERTIFICACION%20DE%20FIRMAS." target="_blank">Certificación de firmas</a>
       </div>
 
-      <button class="btn btn-coches" onclick="toggleCoches()">
-        <span class="btn-icon">🚗</span> Trámites para Coches
-      </button>
+      <div class="columna">
+        <button class="btn" onclick="toggleMenu('submenuMotos')">Trámites de Motos</button>
+        <div id="submenuMotos" class="submenu">
+          <a class="btn" href="https://wa.me/5492304564721?text=Hola%2C%20quiero%20consultar%20sobre%20tr%C3%A1mites%20de%20motos." target="_blank">Dejanos tu consulta</a>
+        </div>
 
-      <div id="submenuCoches" class="submenu">
-        <a href="https://wa.me/5492304564721?text=Hola%2C%20quiero%20hacer%20una%20consulta%20sobre%20tr%C3%A1mites%20de%20coches."
-           target="_blank">Dejanos tu consulta</a>
-      </div>
-
-      <button class="btn btn-deuda" onclick="toggleMultas()">
-        <span class="btn-icon">📄</span> Consultá tu deuda de patentes o multas
-      </button>
-
-      <div id="submenuMultas" class="submenu">
-        <a href="https://infraccionesba.gba.gob.ar/consulta-infraccion" target="_blank">Provincia</a>
-        <a href="https://buenosaires.gob.ar/licenciasdeconducir/consulta-de-infracciones/?actas=transito" target="_blank">Capital</a>
+        <button class="btn" onclick="toggleMenu('submenuCoches')">Trámites de Coches</button>
+        <div id="submenuCoches" class="submenu">
+          <a class="btn" href="https://wa.me/5492304564721?text=Hola%2C%20quiero%20consultar%20sobre%20tr%C3%A1mites%20de%20coches." target="_blank">Dejanos tu consulta</a>
+        </div>
       </div>
 
     </div>
+
+    <a class="btn btn-central" href="https://infraccionesba.gba.gob.ar/consulta-infraccion" target="_blank">
+      Consultá tus deudas
+    </a>
+
   </div>
 
-  <audio id="player" src="musica.mp3" autoplay loop></audio>
-
+  <audio id="player" src="musica.mp3" loop></audio>
   <div id="btnMusica">🔊</div>
 
   <script>
-    function toggleMultas() {
-      const menu = document.getElementById("submenuMultas");
-      menu.style.display = menu.style.display === "flex" ? "none" : "flex";
-    }
-
-    function toggleMotos() {
-      const menu = document.getElementById("submenuMotos");
-      menu.style.display = menu.style.display === "flex" ? "none" : "flex";
-    }
-
-    function toggleCoches() {
-      const menu = document.getElementById("submenuCoches");
-      menu.style.display = menu.style.display === "flex" ? "none" : "flex";
+    function toggleMenu(id) {
+      document.querySelectorAll(".submenu").forEach(menu => menu.classList.remove("show"));
+      document.getElementById(id).classList.toggle("show");
     }
 
     const player = document.getElementById("player");
     const btnMusica = document.getElementById("btnMusica");
+    player.muted = true;
 
-    player.volume = 1;
-    player.play().catch(() => {});
-
-    let musicaActiva = false;
-
-    btnMusica.addEventListener("click", () => {
-      if (!musicaActiva) {
-        player.muted = false;
-        player.play().catch(() => {});
-        btnMusica.innerHTML = "🔈";
-        musicaActiva = true;
-      } else {
-        player.pause();
-        btnMusica.innerHTML = "🔊";
-        musicaActiva = false;
-      }
-    });
+    btnMusica.onclick = () => {
+      player.muted = !player.muted;
+      if (!player.muted) player.play();
+      btnMusica.textContent = player.muted ? "🔊" : "🔈";
+    };
   </script>
 
 </body>

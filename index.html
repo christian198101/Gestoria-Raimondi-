@@ -347,7 +347,7 @@
     </div>
 
   </div>
-    <!-- ===== AUDIO ===== -->
+     <!-- ===== AUDIO ===== -->
   <audio id="player" src="musica.mp3" loop></audio>
 
   <!-- ===== BOTÓN DE MÚSICA ===== -->
@@ -393,11 +393,13 @@
     };
 
     /* ============================
-       DESLIZAMIENTO TÁCTIL MEJORADO
-       (queda arriba, no baja)
+       DESLIZAMIENTO TÁCTIL ESPECIAL
+       SOLO PARA MULTAS/PATENTES
     ============================ */
     if (esMovil) {
       const banner = document.querySelector('.banner');
+      const submenuDeudas = document.getElementById("submenuDeudas");
+
       let startY = 0;
       let currentY = 0;
       let bloqueadoArriba = false;
@@ -410,7 +412,8 @@
         currentY = e.touches[0].clientY;
         const delta = currentY - startY;
 
-        if (!bloqueadoArriba) {
+        // Solo deslizar si el submenú de multas está abierto
+        if (submenuDeudas.classList.contains("show") && !bloqueadoArriba) {
           banner.style.transform = `translateY(${delta}px)`;
         }
       });
@@ -418,26 +421,19 @@
       banner.addEventListener('touchend', () => {
         const delta = currentY - startY;
 
-        /* ===== DESLIZAR HACIA ARRIBA ===== */
-        if (delta < -80) {
-          banner.style.transform = 'translateY(-250px)';
+        // ===== DESLIZAR HACIA ARRIBA =====
+        if (submenuDeudas.classList.contains("show") && delta < -60) {
+          banner.style.transform = 'translateY(-260px)';
           bloqueadoArriba = true;
-
-          // Abrir automáticamente el primer submenú
-          document.querySelectorAll(".submenu").forEach(m => m.classList.remove("show"));
-          document.getElementById("submenuMotos").classList.add("show");
         }
 
-        /* ===== DESLIZAR HACIA ABAJO ===== */
-        else if (delta > 80) {
+        // ===== DESLIZAR HACIA ABAJO =====
+        else if (delta > 60) {
           banner.style.transform = 'translateY(0px)';
           bloqueadoArriba = false;
-
-          // Cerrar todos los submenús
-          document.querySelectorAll(".submenu").forEach(m => m.classList.remove("show"));
         }
 
-        /* ===== SI NO SUPERA EL UMBRAL ===== */
+        // ===== SI NO SUPERA EL UMBRAL =====
         else {
           if (!bloqueadoArriba) {
             banner.style.transform = 'translateY(0px)';

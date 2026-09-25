@@ -347,7 +347,7 @@
     </div>
 
   </div>
-     <!-- ===== AUDIO ===== -->
+       <!-- ===== AUDIO ===== -->
   <audio id="player" src="musica.mp3" loop></audio>
 
   <!-- ===== BOTÓN DE MÚSICA ===== -->
@@ -393,7 +393,7 @@
     };
 
     /* ============================
-       DESLIZAMIENTO TÁCTIL ESPECIAL
+       DESLIZAMIENTO DEFINITIVO
        SOLO PARA MULTAS/PATENTES
     ============================ */
     if (esMovil) {
@@ -422,13 +422,13 @@
         const delta = currentY - startY;
 
         // ===== DESLIZAR HACIA ARRIBA =====
-        if (submenuDeudas.classList.contains("show") && delta < -60) {
-          banner.style.transform = 'translateY(-260px)';
+        if (submenuDeudas.classList.contains("show") && delta < -50) {
+          banner.style.transform = 'translateY(-300px)';
           bloqueadoArriba = true;
         }
 
         // ===== DESLIZAR HACIA ABAJO =====
-        else if (delta > 60) {
+        else if (delta > 50) {
           banner.style.transform = 'translateY(0px)';
           bloqueadoArriba = false;
         }

@@ -180,7 +180,7 @@
       background: rgba(255,255,255,0.10);
       border: 2px solid #4da3ff;
       border-radius: 50%;
-      display: none;
+      display: flex;
       justify-content: center;
       align-items: center;
       font-size: 28px;
@@ -194,12 +194,6 @@
 
     #btnMusica:hover {
       transform: scale(1.1);
-    }
-
-    @media (max-width: 768px) {
-      #btnMusica {
-        display: flex;
-      }
     }
   </style>
 </head>
@@ -254,7 +248,7 @@
   </div>
 
   <audio id="player" src="musica.mp3" loop></audio>
-  <div id="btnMusica">🔊</div>
+  <div id="btnMusica">🔈</div>
 
   <script>
     function toggleMenu(id) {
@@ -270,7 +264,20 @@
 
     const player = document.getElementById("player");
     const btnMusica = document.getElementById("btnMusica");
-    player.muted = true;
+
+    // Detectar si es móvil
+    const esMovil = /Android|iPhone|iPad|iPod|Opera Mini|IEMobile/i.test(navigator.userAgent);
+
+    if (!esMovil) {
+      // PC → autoplay permitido
+      player.muted = false;
+      player.play().catch(() => {});
+      btnMusica.textContent = "🔈";
+    } else {
+      // Móvil → autoplay bloqueado
+      player.muted = true;
+      btnMusica.textContent = "🔊";
+    }
 
     btnMusica.onclick = () => {
       player.muted = !player.muted;
@@ -281,3 +288,4 @@
 
 </body>
 </html>
+

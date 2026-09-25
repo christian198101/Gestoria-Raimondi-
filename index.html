@@ -347,7 +347,7 @@
     </div>
 
   </div>
-  <!-- ===== AUDIO ===== -->
+    <!-- ===== AUDIO ===== -->
   <audio id="player" src="musica.mp3" loop></audio>
 
   <!-- ===== BOTÓN DE MÚSICA ===== -->
@@ -393,13 +393,14 @@
     };
 
     /* ============================
-       DESLIZAMIENTO TÁCTIL EN MÓVIL
-       (slide up / slide down)
+       DESLIZAMIENTO TÁCTIL MEJORADO
+       (queda arriba, no baja)
     ============================ */
     if (esMovil) {
       const banner = document.querySelector('.banner');
       let startY = 0;
       let currentY = 0;
+      let bloqueadoArriba = false;
 
       banner.addEventListener('touchstart', (e) => {
         startY = e.touches[0].clientY;
@@ -409,34 +410,38 @@
         currentY = e.touches[0].clientY;
         const delta = currentY - startY;
 
-        // Mover visualmente
-        banner.style.transform = `translateY(${delta}px)`;
+        if (!bloqueadoArriba) {
+          banner.style.transform = `translateY(${delta}px)`;
+        }
       });
 
       banner.addEventListener('touchend', () => {
         const delta = currentY - startY;
 
-        // ===== DESLIZAR HACIA ARRIBA =====
+        /* ===== DESLIZAR HACIA ARRIBA ===== */
         if (delta < -80) {
-          banner.style.transform = 'translateY(-120px)';
+          banner.style.transform = 'translateY(-250px)';
+          bloqueadoArriba = true;
 
           // Abrir automáticamente el primer submenú
-          const primerMenu = document.getElementById("submenuMotos");
           document.querySelectorAll(".submenu").forEach(m => m.classList.remove("show"));
-          primerMenu.classList.add("show");
+          document.getElementById("submenuMotos").classList.add("show");
         }
 
-        // ===== DESLIZAR HACIA ABAJO =====
+        /* ===== DESLIZAR HACIA ABAJO ===== */
         else if (delta > 80) {
           banner.style.transform = 'translateY(0px)';
+          bloqueadoArriba = false;
 
           // Cerrar todos los submenús
           document.querySelectorAll(".submenu").forEach(m => m.classList.remove("show"));
         }
 
-        // ===== SI NO SUPERA EL UMBRAL =====
+        /* ===== SI NO SUPERA EL UMBRAL ===== */
         else {
-          banner.style.transform = 'translateY(0px)';
+          if (!bloqueadoArriba) {
+            banner.style.transform = 'translateY(0px)';
+          }
         }
       });
     }
@@ -444,4 +449,3 @@
 
 </body>
 </html>
-

@@ -341,41 +341,269 @@
         CABA
       </a>
 
+     <!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <title>Yanina Raimondi – Gestoría del Automotor</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <!-- Estilos principales -->
+  <style>
+    :root {
+      --color-primario: #4da3ff;
+      --color-blanco: #ffffff;
+      --blur: rgba(255,255,255,0.10);
+    }
+
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background-image: url('fondo-web.jpg');
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+      color: var(--color-blanco);
+    }
+
+    @media (max-width: 768px) {
+      body {
+        background-image: url('fondo-movil.jpg');
+      }
+    }
+
+    .banner {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 20px;
+      box-sizing: border-box;
+      backdrop-filter: blur(3px);
+      transition: transform 0.3s ease;
+    }
+    /* ===== TÍTULO ===== */
+    .titulo {
+      text-align: center;
+      margin-bottom: 25px;
+    }
+
+    .titulo h1 {
+      font-size: 3.6rem;
+      margin: 0;
+      font-weight: 900;
+      text-transform: uppercase;
+      text-shadow: 0px 4px 10px rgba(0,0,0,0.45);
+    }
+
+    .titulo h2 {
+      font-size: 1.6rem;
+      margin: 5px 0 0;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      font-weight: 700;
+      text-shadow: 0px 3px 6px rgba(0,0,0,0.35);
+    }
+
+    /* ===== BOTONES ===== */
+    .btn {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 12px 20px;
+      border-radius: 14px;
+      cursor: pointer;
+      font-size: 1rem;
+      font-weight: 600;
+      text-decoration: none;
+      color: var(--color-blanco);
+      background: var(--blur);
+      border: 2px solid var(--color-primario);
+      box-shadow: 0 6px 18px rgba(0,0,0,0.45);
+      transition: all 0.25s ease;
+      backdrop-filter: blur(10px);
+    }
+
+    .btn:hover {
+      background: rgba(255,255,255,0.18);
+      border-color: #82c3ff;
+      transform: translateY(-2px) scale(1.03);
+    }
+
+    .icono {
+      margin-right: 10px;
+    }
+
+    /* ===== COLUMNAS ===== */
+    .contenedor-columnas {
+      display: flex;
+      justify-content: space-between;
+      gap: 20px;
+      flex-wrap: wrap;
+    }
+
+    .columna {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      width: 48%;
+    }
+
+    @media (max-width: 768px) {
+      .columna {
+        width: 100%;
+      }
+    }
+
+    /* ===== BOTÓN CENTRAL ===== */
+    .btn-central {
+      margin: 30px auto 0 auto;
+      width: 80%;
+      max-width: 400px;
+      font-size: 1.3rem;
+      padding: 18px 26px;
+    }
+    /* ===== SUBMENÚ ===== */
+    .submenu {
+      max-height: 0;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      transition: max-height 0.3s ease-out;
+    }
+
+    .submenu.show {
+      max-height: 300px;
+    }
+
+    /* ===== BOTÓN DE MÚSICA ===== */
+    #btnMusica {
+      position: fixed;
+      bottom: 25px;
+      right: 25px;
+      width: 60px;
+      height: 60px;
+      background: var(--blur);
+      border: 2px solid var(--color-primario);
+      border-radius: 50%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-size: 28px;
+      color: var(--color-blanco);
+      cursor: pointer;
+      z-index: 9999;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.45);
+      transition: all 0.25s ease;
+      backdrop-filter: blur(10px);
+    }
+
+    #btnMusica:hover {
+      transform: scale(1.1);
+    }
+  </style>
+</head>
+
+<body>
+  <div class="banner">
+    <div class="titulo">
+      <h1>Yanina Raimondi</h1>
+      <h2>Gestoría del Automotor</h2>
+    </div>
+    <div class="contenedor-columnas">
+      <div class="columna">
+
+        <!-- TRANSFERENCIA -->
+        <a class="btn" href="https://wa.me/5492304564721?text=Hola%20quiero%20consultar%20sobre%20TRANSFERENCIA." target="_blank">
+          <!-- SVG original -->
+          Transferencia
+        </a>
+
+        <!-- INSCRIPCIÓN INICIAL -->
+        <a class="btn" href="https://wa.me/5492304564721?text=Hola%20quiero%20consultar%20sobre%20INSCRIPCION%20INICIAL." target="_blank">
+          Inscripción inicial
+        </a>
+
+        <!-- INFORME DE DOMINIO -->
+        <a class="btn" href="https://wa.me/5492304564721?text=Hola%20quiero%20consultar%20sobre%20INFORME%20DE%20DOMINIO." target="_blank">
+          Informe de dominio
+        </a>
+
+        <!-- DUPLICADO DE CHAPAS -->
+        <a class="btn" href="https://wa.me/5492304564721?text=Hola%20quiero%20consultar%20sobre%20DUPLICADO%20DE%20CHAPAS." target="_blank">
+          Duplicado de chapas
+        </a>
+
+        <!-- CERTIFICACIÓN DE FIRMAS -->
+        <a class="btn" href="https://wa.me/5492304564721?text=Hola%20quiero%20consultar%20sobre%20CERTIFICACION%20DE%20FIRMAS." target="_blank">
+          Certificación de firmas
+        </a>
+
+      </div>
+
+      <div class="columna">
+
+        <!-- MOTOS -->
+        <button class="btn" onclick="toggleMenu('submenuMotos')">
+          Trámites de Motos
+        </button>
+
+        <div id="submenuMotos" class="submenu">
+          <a class="btn" href="https://wa.me/5492304564721?text=Hola%20quiero%20consultar%20sobre%20tr%C3%A1mites%20de%20motos." target="_blank">
+            Dejanos tu consulta
+          </a>
+        </div>
+
+        <!-- COCHES -->
+        <button class="btn" onclick="toggleMenu('submenuCoches')">
+          Trámites de Coches
+        </button>
+
+        <div id="submenuCoches" class="submenu">
+          <a class="btn" href="https://wa.me/5492304564721?text=Hola%20quiero%20consultar%20sobre%20tr%C3%A1mites%20de%20coches." target="_blank">
+            Dejanos tu consulta
+          </a>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- BOTÓN CENTRAL -->
+    <button class="btn btn-central" onclick="toggleMenu('submenuDeudas')">
+      Consulta de multas o patentes
+    </button>
+
+    <div id="submenuDeudas" class="submenu">
+      <a class="btn" href="https://buenosaires.gob.ar/licenciasdeconducir/consulta-de-infracciones/?actas=transito" target="_blank">
+        CABA
+      </a>
+
       <a class="btn" href="https://infraccionesba.gba.gob.ar/consulta-infraccion" target="_blank">
         Provincia
       </a>
     </div>
-
-  </div>
-        <!-- ===== AUDIO ===== -->
+  <!-- AUDIO -->
   <audio id="player" src="musica.mp3" loop></audio>
 
-  <!-- ===== BOTÓN DE MÚSICA ===== -->
-  <div id="btnMusica">🔈</div>
+  <!-- BOTÓN DE MÚSICA -->
+  <div id="btnMusica" aria-label="Control de música">🔈</div>
 
-  <!-- ===== JAVASCRIPT ===== -->
+  <!-- JAVASCRIPT -->
   <script>
-    /* ============================
-       SUBMENÚS (click)
-    ============================ */
+    /* SUBMENÚS */
     function toggleMenu(id) {
       const menu = document.getElementById(id);
-      const isOpen = menu.classList.contains("show");
+      const abierto = menu.classList.contains("show");
 
       document.querySelectorAll(".submenu").forEach(m => m.classList.remove("show"));
 
-      if (!isOpen) {
-        menu.classList.add("show");
-      }
+      if (!abierto) menu.classList.add("show");
     }
 
-    /* ============================
-       MÚSICA AUTOMÁTICA EN PC
-    ============================ */
+    /* MÚSICA */
     const player = document.getElementById("player");
     const btnMusica = document.getElementById("btnMusica");
 
-    const esMovil = /Android|iPhone|iPad|iPod|Opera Mini|IEMobile/i.test(navigator.userAgent);
+    const esMovil = window.matchMedia("(max-width: 768px)").matches;
 
     if (!esMovil) {
       player.muted = false;
@@ -391,56 +619,6 @@
       if (!player.muted) player.play();
       btnMusica.textContent = player.muted ? "🔊" : "🔈";
     };
-
-    /* ============================
-       DESLIZAMIENTO DEFINITIVO
-       SOLO PARA MULTAS/PATENTES
-    ============================ */
-    if (esMovil) {
-      const banner = document.querySelector('.banner');
-      const submenuDeudas = document.getElementById("submenuDeudas");
-
-      let startY = 0;
-      let currentY = 0;
-      let bloqueadoArriba = false;
-
-      banner.addEventListener('touchstart', (e) => {
-        startY = e.touches[0].clientY;
-      });
-
-      banner.addEventListener('touchmove', (e) => {
-        currentY = e.touches[0].clientY;
-        const delta = currentY - startY;
-
-        // Solo deslizar si el submenú de multas está abierto
-        if (submenuDeudas.classList.contains("show") && !bloqueadoArriba) {
-          banner.style.transform = `translateY(${delta}px)`;
-        }
-      });
-
-      banner.addEventListener('touchend', () => {
-        const delta = currentY - startY;
-
-        // ===== DESLIZAR HACIA ARRIBA =====
-        if (submenuDeudas.classList.contains("show") && delta < -50) {
-          banner.style.transform = 'translateY(-300px)';
-          bloqueadoArriba = true;
-        }
-
-        // ===== DESLIZAR HACIA ABAJO =====
-        else if (delta > 50) {
-          banner.style.transform = 'translateY(0px)';
-          bloqueadoArriba = false;
-        }
-
-        // ===== SI NO SUPERA EL UMBRAL =====
-        else {
-          if (!bloqueadoArriba) {
-            banner.style.transform = 'translateY(0px)';
-          }
-        }
-      });
-    }
   </script>
 
 </body>

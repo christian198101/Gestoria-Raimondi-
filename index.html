@@ -386,38 +386,51 @@
       btnMusica.textContent = player.muted ? "🔊" : "🔈";
     };
 
-  /* DESLIZAMIENTO DEL BANNER SOLO PARA MULTAS/PATENTES */
+/* ============================
+   DESLIZAMIENTO GLOBAL DEL BANNER
+   FUNCIONA EN TODA LA PANTALLA
+============================ */
+
 const banner = document.querySelector('.banner');
-const submenuDeudas = document.getElementById("submenuDeudas");
+const titulo = document.querySelector('.titulo');
 
 let startY = 0;
 let currentY = 0;
 let bloqueadoArriba = false;
 
-banner.addEventListener('touchstart', (e) => {
+document.addEventListener('touchstart', (e) => {
   startY = e.touches[0].clientY;
 });
 
-banner.addEventListener('touchmove', (e) => {
+document.addEventListener('touchmove', (e) => {
   currentY = e.touches[0].clientY;
   const delta = currentY - startY;
 
-  if (submenuDeudas.classList.contains("show") && !bloqueadoArriba) {
+  if (!bloqueadoArriba) {
     banner.style.transform = `translateY(${delta}px)`;
   }
 });
 
-banner.addEventListener('touchend', () => {
+document.addEventListener('touchend', () => {
   const delta = currentY - startY;
 
-  if (submenuDeudas.classList.contains("show") && delta < -50) {
+  /* ===== SUBIR (OCULTAR TÍTULO) ===== */
+  if (delta < -50) {
     banner.style.transform = 'translateY(-300px)';
+    titulo.style.opacity = '0';
+    titulo.style.transform = 'translateY(-40px)';
     bloqueadoArriba = true;
   }
+
+  /* ===== BAJAR (MOSTRAR TÍTULO) ===== */
   else if (delta > 50) {
     banner.style.transform = 'translateY(0px)';
+    titulo.style.opacity = '1';
+    titulo.style.transform = 'translateY(0px)';
     bloqueadoArriba = false;
   }
+
+  /* ===== SI NO SUPERA UMBRAL ===== */
   else {
     if (!bloqueadoArriba) {
       banner.style.transform = 'translateY(0px)';
@@ -430,4 +443,5 @@ banner.addEventListener('touchend', () => {
 
 </body>
 </html>
+
 

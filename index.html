@@ -39,7 +39,7 @@
       .banner {
         min-height: 100vh;
         padding-top: 5px;
-        touch-action: pan-y;
+        touch-action: none; /* DESLIZAMIENTO TOTAL */
       }
 
       .titulo h1 {
@@ -72,6 +72,7 @@
     .titulo {
       text-align: center;
       margin-bottom: 25px;
+      transition: opacity 0.3s ease, transform 0.3s ease;
     }
 
     .titulo h1 {
@@ -345,6 +346,7 @@
     </div>
 
   </div>
+
   <!-- AUDIO -->
   <audio id="player" src="musica.mp3" loop></audio>
 
@@ -371,7 +373,7 @@
 
     const esMovil = window.matchMedia("(max-width: 768px)").matches;
 
-      if (!esMovil) {
+    if (!esMovil) {
       player.muted = false;
       player.play().catch(() => {});
       btnMusica.textContent = "🔈";
@@ -386,62 +388,51 @@
       btnMusica.textContent = player.muted ? "🔊" : "🔈";
     };
 
-/* ============================
-   DESLIZAMIENTO GLOBAL DEL BANNER
-   FUNCIONA EN TODA LA PANTALLA
-============================ */
+    /* DESLIZAMIENTO GLOBAL DEL BANNER */
 
-const banner = document.querySelector('.banner');
-const titulo = document.querySelector('.titulo');
+    const banner = document.querySelector('.banner');
+    const titulo = document.querySelector('.titulo');
 
-let startY = 0;
-let currentY = 0;
-let bloqueadoArriba = false;
+    let startY = 0;
+    let currentY = 0;
+    let bloqueadoArriba = false;
 
-document.addEventListener('touchstart', (e) => {
-  startY = e.touches[0].clientY;
-});
+    document.addEventListener('touchstart', (e) => {
+      startY = e.touches[0].clientY;
+    });
 
-document.addEventListener('touchmove', (e) => {
-  currentY = e.touches[0].clientY;
-  const delta = currentY - startY;
+    document.addEventListener('touchmove', (e) => {
+      currentY = e.touches[0].clientY;
+      const delta = currentY - startY;
 
-  if (!bloqueadoArriba) {
-    banner.style.transform = `translateY(${delta}px)`;
-  }
-});
+      if (!bloqueadoArriba) {
+        banner.style.transform = `translateY(${delta}px)`;
+      }
+    });
 
-document.addEventListener('touchend', () => {
-  const delta = currentY - startY;
+    document.addEventListener('touchend', () => {
+      const delta = currentY - startY;
 
-  /* ===== SUBIR (OCULTAR TÍTULO) ===== */
-  if (delta < -50) {
-    banner.style.transform = 'translateY(-300px)';
-    titulo.style.opacity = '0';
-    titulo.style.transform = 'translateY(-40px)';
-    bloqueadoArriba = true;
-  }
-
-  /* ===== BAJAR (MOSTRAR TÍTULO) ===== */
-  else if (delta > 50) {
-    banner.style.transform = 'translateY(0px)';
-    titulo.style.opacity = '1';
-    titulo.style.transform = 'translateY(0px)';
-    bloqueadoArriba = false;
-  }
-
-  /* ===== SI NO SUPERA UMBRAL ===== */
-  else {
-    if (!bloqueadoArriba) {
-      banner.style.transform = 'translateY(0px)';
-    }
-  }
-});
-
-    
+      if (delta < -50) {
+        banner.style.transform = 'translateY(-300px)';
+        titulo.style.opacity = '0';
+        titulo.style.transform = 'translateY(-40px)';
+        bloqueadoArriba = true;
+      }
+      else if (delta > 50) {
+        banner.style.transform = 'translateY(0px)';
+        titulo.style.opacity = '1';
+        titulo.style.transform = 'translateY(0px)';
+        bloqueadoArriba = false;
+      }
+      else {
+        if (!bloqueadoArriba) {
+          banner.style.transform = 'translateY(0px)';
+        }
+      }
+    });
   </script>
 
 </body>
 </html>
-
 

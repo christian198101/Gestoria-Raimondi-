@@ -369,9 +369,9 @@
     const player = document.getElementById("player");
     const btnMusica = document.getElementById("btnMusica");
 
-    const esMovil = /Android|iPhone|iPad|iPod|Opera Mini|IEMobile/i.test(navigator.userAgent);
+    const esMovil = window.matchMedia("(max-width: 768px)").matches;
 
-    if (!esMovil) {
+      if (!esMovil) {
       player.muted = false;
       player.play().catch(() => {});
       btnMusica.textContent = "🔈";
@@ -386,47 +386,48 @@
       btnMusica.textContent = player.muted ? "🔊" : "🔈";
     };
 
-    /* DESLIZAMIENTO DEL BANNER SOLO PARA MULTAS/PATENTES EN MÓVIL */
-    if (esMovil) {
-      const banner = document.querySelector('.banner');
-      const submenuDeudas = document.getElementById("submenuDeudas");
+  /* DESLIZAMIENTO DEL BANNER SOLO PARA MULTAS/PATENTES */
+const banner = document.querySelector('.banner');
+const submenuDeudas = document.getElementById("submenuDeudas");
 
-      let startY = 0;
-      let currentY = 0;
-      let bloqueadoArriba = false;
+let startY = 0;
+let currentY = 0;
+let bloqueadoArriba = false;
 
-      banner.addEventListener('touchstart', (e) => {
-        startY = e.touches[0].clientY;
-      });
+banner.addEventListener('touchstart', (e) => {
+  startY = e.touches[0].clientY;
+});
 
-      banner.addEventListener('touchmove', (e) => {
-        currentY = e.touches[0].clientY;
-        const delta = currentY - startY;
+banner.addEventListener('touchmove', (e) => {
+  currentY = e.touches[0].clientY;
+  const delta = currentY - startY;
 
-        if (submenuDeudas.classList.contains("show") && !bloqueadoArriba) {
-          banner.style.transform = `translateY(${delta}px)`;
-        }
-      });
+  if (submenuDeudas.classList.contains("show") && !bloqueadoArriba) {
+    banner.style.transform = `translateY(${delta}px)`;
+  }
+});
 
-      banner.addEventListener('touchend', () => {
-        const delta = currentY - startY;
+banner.addEventListener('touchend', () => {
+  const delta = currentY - startY;
 
-        if (submenuDeudas.classList.contains("show") && delta < -50) {
-          banner.style.transform = 'translateY(-300px)';
-          bloqueadoArriba = true;
-        }
-        else if (delta > 50) {
-          banner.style.transform = 'translateY(0px)';
-          bloqueadoArriba = false;
-        }
-        else {
-          if (!bloqueadoArriba) {
-            banner.style.transform = 'translateY(0px)';
-          }
-        }
-      });
+  if (submenuDeudas.classList.contains("show") && delta < -50) {
+    banner.style.transform = 'translateY(-300px)';
+    bloqueadoArriba = true;
+  }
+  else if (delta > 50) {
+    banner.style.transform = 'translateY(0px)';
+    bloqueadoArriba = false;
+  }
+  else {
+    if (!bloqueadoArriba) {
+      banner.style.transform = 'translateY(0px)';
+    }
+  }
+});
+
     }
   </script>
 
 </body>
 </html>
+

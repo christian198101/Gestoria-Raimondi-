@@ -39,7 +39,7 @@
       .banner {
         min-height: 100vh;
         padding-top: 5px;
-        touch-action: none; /* DESLIZAMIENTO TOTAL */
+        touch-action: none;
       }
 
       .titulo h1 {
@@ -204,6 +204,40 @@
     #btnMusica:hover {
       transform: scale(1.1);
     }
+
+    /* ===== GALERÍA FULLSCREEN ===== */
+    #galeriaFullscreen {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0,0,0,0.9);
+      display: none;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+      z-index: 99999;
+      padding: 20px;
+    }
+
+    #galeriaFullscreen img {
+      max-width: 90%;
+      max-height: 80%;
+      border-radius: 10px;
+      box-shadow: 0 0 20px rgba(255,255,255,0.3);
+    }
+
+    #cerrarGaleria {
+      margin-top: 20px;
+      padding: 12px 20px;
+      background: rgba(255,255,255,0.15);
+      border: 2px solid #4da3ff;
+      border-radius: 10px;
+      color: white;
+      font-size: 1.2rem;
+      cursor: pointer;
+    }
   </style>
 </head>
 <body>
@@ -214,7 +248,6 @@
       <h1>Yanina Raimondi</h1>
       <h2>Gestoría del Automotor</h2>
     </div>
-
     <div class="contenedor-columnas">
       <div class="columna">
 
@@ -325,28 +358,23 @@
       </div>
     </div>
 
-    <!-- BOTÓN CENTRAL MULTAS/PATENTES -->
-    <button class="btn btn-central" onclick="toggleMenu('submenuDeudas')">
+    <!-- BOTÓN CENTRAL GALERÍA DE FOTOS -->
+    <button class="btn btn-central" onclick="abrirGaleria()">
       <svg class="icono" width="40" height="40" viewBox="0 0 64 64" fill="none">
-        <path d="M32 10l18 10v14c0 12-10 20-18 20s-18-8-18-20V20z"
-              fill="rgba(255,255,255,0.20)" stroke="white" stroke-width="3"/>
-        <line x1="32" y1="22" x2="32" y2="36" stroke="#4da3ff" stroke-width="4" stroke-linecap="round"/>
-        <circle cx="32" cy="42" r="3" fill="#4da3ff"/>
+        <rect x="8" y="12" width="48" height="36" rx="6" stroke="white" stroke-width="3" fill="rgba(255,255,255,0.15)"/>
+        <circle cx="22" cy="26" r="6" fill="#4da3ff"/>
+        <path d="M12 42l12-10 10 8 8-6 10 8" stroke="#4da3ff" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
       </svg>
-      Consulta de multas o patentes
+      Galería de fotos
     </button>
-
-    <div id="submenuDeudas" class="submenu">
-      <a class="btn" href="https://buenosaires.gob.ar/licenciasdeconducir/consulta-de-infracciones/?actas=transito" target="_blank">
-        CABA
-      </a>
-      <a class="btn" href="https://infraccionesba.gba.gob.ar/consulta-infraccion" target="_blank">
-        Provincia
-      </a>
-    </div>
 
   </div>
 
+  <!-- GALERÍA FULLSCREEN -->
+  <div id="galeriaFullscreen">
+    <img id="fotoGaleria" src="galeria/foto1.jpg" alt="Galería">
+    <button id="cerrarGaleria" onclick="cerrarGaleria()">Cerrar</button>
+  </div>
   <!-- AUDIO -->
   <audio id="player" src="musica.mp3" loop></audio>
 
@@ -365,6 +393,20 @@
       if (!isOpen) {
         menu.classList.add("show");
       }
+    }
+
+    /* GALERÍA FULLSCREEN */
+    function abrirGaleria() {
+      const galeria = document.getElementById("galeriaFullscreen");
+      const foto = document.getElementById("fotoGaleria");
+
+      foto.src = "galeria/foto1.jpg"; // cambia a la foto que quieras
+      galeria.style.display = "flex";
+    }
+
+    function cerrarGaleria() {
+      const galeria = document.getElementById("galeriaFullscreen");
+      galeria.style.display = "none";
     }
 
     /* MÚSICA AUTOMÁTICA EN PC */
@@ -389,7 +431,6 @@
     };
 
     /* DESLIZAMIENTO GLOBAL DEL BANNER */
-
     const banner = document.querySelector('.banner');
     const titulo = document.querySelector('.titulo');
 
@@ -435,4 +476,3 @@
 
 </body>
 </html>
-
